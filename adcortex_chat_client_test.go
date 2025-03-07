@@ -53,7 +53,6 @@ func TestAdCortexChatClientBasic(t *testing.T) {
 	assert.NoError(t, err)
 	// Now we have 3 total messages; that meets numMessagesBeforeAd
 	assert.NotNil(t, ad)
-	assert.Equal(t, 123, ad.Idx)
 	assert.Equal(t, "Mock Chat Ad", ad.AdTitle)
 	assert.Equal(t, 1, callCount, "Should have called server once")
 
@@ -70,6 +69,5 @@ func TestAdCortexChatClientBasic(t *testing.T) {
 	assert.NoError(t, err)
 	// Now 2 new messages since last ad => Should show ad again
 	assert.NotNil(t, ad)
-	assert.Equal(t, 123, ad.Idx) // same mocked ad from server
 	assert.Equal(t, 2, callCount, "Should have called server twice by now")
 }

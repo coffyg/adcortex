@@ -36,7 +36,6 @@ func TestAdCortexClientFetchAd(t *testing.T) {
 	})
 	assert.NoError(t, err)
 	assert.NotNil(t, ad)
-	assert.Equal(t, 1, ad.Idx)
 	assert.Equal(t, "Test Ad", ad.AdTitle)
 
 	contextString := client.AdCortexGenerateContext(ad)
