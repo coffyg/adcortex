@@ -143,7 +143,7 @@ type AdCortexMessage struct {
 
 // AdCortexAd represents an advertisement fetched via the ADCortex API.
 type AdCortexAd struct {
-	Idx               int32  `json:"idx"`
+	Idx               int    `json:"idx"`
 	AdTitle           string `json:"ad_title"`
 	AdDescription     string `json:"ad_description"`
 	PlacementTemplate string `json:"placement_template"`

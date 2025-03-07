@@ -103,7 +103,9 @@ func (c *AdCortexClient) AdCortexFetchAd(messages []AdCortexMessage) (*AdCortexA
 
 	var responseData adCortexResponsePayload
 	if err := json.NewDecoder(resp.Body).Decode(&responseData); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, resp.Body)
+		stringBody, _ := io.ReadAll(resp.Body)
+
+		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, stringBody)
 	}
 
 	if len(responseData.Ads) == 0 {
