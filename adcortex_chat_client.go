@@ -156,7 +156,7 @@ func (c *AdCortexChatClient) adCortexFetchAd() (*AdCortexAd, error) {
 
 	var res adCortexResponsePayload
 	if err := json.NewDecoder(resp.Body).Decode(&res); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
+		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, resp.Body)
 	}
 
 	if len(res.Ads) == 0 {
