@@ -101,11 +101,15 @@ func (c *AdCortexClient) AdCortexFetchAd(messages []AdCortexMessage) (*AdCortexA
 		return nil, fmt.Errorf("received non-OK status %d: %s", resp.StatusCode, string(bodyBytes))
 	}
 
+	if resp.ContentLength == 0 {
+		return nil, nil
+	}
+
 	var responseData adCortexResponsePayload
 	if err := json.NewDecoder(resp.Body).Decode(&responseData); err != nil {
 		stringBody, _ := io.ReadAll(resp.Body)
 
-		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, stringBody)
+		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, string(stringBody))
 	}
 
 	if len(responseData.Ads) == 0 {

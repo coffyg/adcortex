@@ -154,11 +154,16 @@ func (c *AdCortexChatClient) adCortexFetchAd() (*AdCortexAd, error) {
 		return nil, fmt.Errorf("received non-OK status %d: %s", resp.StatusCode, string(b))
 	}
 
+	// check if empty response
+	if resp.ContentLength == 0 {
+		return nil, nil
+	}
+
 	var res adCortexResponsePayload
 	if err := json.NewDecoder(resp.Body).Decode(&res); err != nil {
 		stringBody, _ := io.ReadAll(resp.Body)
 
-		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, stringBody)
+		return nil, fmt.Errorf("failed to decode response: %w: '%s'", err, string(stringBody))
 	}
 
 	if len(res.Ads) == 0 {
