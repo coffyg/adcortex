@@ -15,7 +15,7 @@ golang client for AdCortex (by 3102labs)
 ## Installation
 
 ```bash
-go get github.com/yourusername/adcortex
+go get github.com/coffyg/adcortex
 ```
 
 --- 
@@ -31,7 +31,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/yourusername/adcortex"
+    "github.com/coffyg/adcortex"
 )
 
 func main() {
@@ -101,7 +101,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/yourusername/adcortex"
+    "github.com/coffyg/adcortex"
 )
 
 func main() {
@@ -173,7 +173,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/yourusername/adcortex"
+    "github.com/coffyg/adcortex"
 )
 
 func main() {
